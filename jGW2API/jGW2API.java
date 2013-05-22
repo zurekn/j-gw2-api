@@ -45,6 +45,7 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class jGW2API {
@@ -152,6 +153,22 @@ public class jGW2API {
                 jsonString += read;
             }
             return new JSONObject(jsonString);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public JSONArray getJSONArray() {
+        try {            
+            BufferedReader buf = new BufferedReader(new InputStreamReader(this.httpConnection.getInputStream()));
+            String jsonString = "";
+            String read;
+            while ((read = buf.readLine()) != null) {
+                jsonString += read;
+            }
+            return new JSONArray(jsonString);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -288,9 +305,9 @@ public class jGW2API {
         return null;
     }
     
-    static public JSONObject getEventNames() {
+    static public JSONArray getEventNames() {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"event_names.json")).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"event_names.json")).getJSONArray();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -298,9 +315,9 @@ public class jGW2API {
         return null;
     }
     
-    static public JSONObject getWorldNames() {
+    static public JSONArray getWorldNames() {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"world_names.json")).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"world_names.json")).getJSONArray();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -308,9 +325,9 @@ public class jGW2API {
         return null;
     }
     
-    static public JSONObject getMapNames() {
+    static public JSONArray getMapNames() {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"map_names.json")).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"map_names.json")).getJSONArray();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -318,9 +335,9 @@ public class jGW2API {
         return null;
     }
     
-    static public JSONObject getEventNames(String lang) {
+    static public JSONArray getEventNames(String lang) {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"event_names.json?lang="+lang)).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"event_names.json?lang="+lang)).getJSONArray();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -328,9 +345,9 @@ public class jGW2API {
         return null;
     }
     
-    static public JSONObject getWorldNames(String lang) {
+    static public JSONArray getWorldNames(String lang) {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"world_names.json?lang="+lang)).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"world_names.json?lang="+lang)).getJSONArray();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -338,9 +355,9 @@ public class jGW2API {
         return null;
     }
     
-    static public JSONObject getMapNames(String lang) {
+    static public JSONArray getMapNames(String lang) {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"map_names.json?lang="+lang)).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"map_names.json?lang="+lang)).getJSONArray();
         }
         catch (Exception e) {
             e.printStackTrace();
