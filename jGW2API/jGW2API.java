@@ -248,7 +248,7 @@ public class jGW2API {
     
     static public JSONObject getWvWMatchDetails(String id) {
         try {
-            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/match_details?match_id="+id)).getJSONObject();
+            return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/match_details.json?match_id="+id)).getJSONObject();
         }
         catch (Exception e) {
             e.printStackTrace();
