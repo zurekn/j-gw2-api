@@ -129,12 +129,12 @@ public class jGW2API {
         return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/match_details.json?match_id="+id)).getJSONObject();
     }
     
-    static public JSONObject getWvWObjectiveNames() throws IOException {
-        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/objective_names.json")).getJSONObject();
+    static public JSONArray getWvWObjectiveNames() throws IOException {
+        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/objective_names.json")).getJSONArray();
     }
     
-    static public JSONObject getWvWObjectiveNames(String lang) throws IOException, MalformedURLException {
-        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/objective_names.json?lang="+lang)).getJSONObject();
+    static public JSONArray getWvWObjectiveNames(String lang) throws IOException, MalformedURLException {
+        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"wvw/objective_names.json?lang="+lang)).getJSONArray();
     }
     
     static public JSONObject getEvents(String w_id, String e_id, String m_id) 
