@@ -51,7 +51,15 @@ public abstract class HighLevelAPI {
     }
     
     public static Events getEvent(Integer worldID, String eventID, Integer mapID) throws IOException {
-        return new Events(jGW2API.getEvents(worldID.toString(), eventID, mapID.toString()));
+        String w_id = null;
+        String m_id = null;
+        if (worldID != null) {
+            w_id = worldID.toString();
+        }
+        if (mapID != null) {
+            m_id = mapID.toString();
+        }
+        return new Events(jGW2API.getEvents(w_id, eventID, m_id));
     }
     
     public static MatchDetails getWvWMatchDetails(String matchID) throws IOException {

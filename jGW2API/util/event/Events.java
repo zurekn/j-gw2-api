@@ -23,23 +23,24 @@ THE SOFTWARE.
 
 package jGW2API.util.event;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Events {
     
-    private ArrayList<Event> events;
+    private HashMap<String,Event> events;
     
     public Events (JSONObject json) {
         JSONArray e = json.getJSONArray("events");
-        this.events = new ArrayList();
+        this.events = new HashMap();
         for (int i = 0; i<e.length();i++) {
-            this.events.add(new Event(e.getJSONObject(i)));
+            Event tmp = new Event(e.getJSONObject(i));
+            this.events.put(tmp.getEventID(),tmp);
         }
     }
     
-    public ArrayList<Event> getEvents() {
+    public HashMap<String,Event> getEvents() {
         return this.events;
     }
     

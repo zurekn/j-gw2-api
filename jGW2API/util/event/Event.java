@@ -32,7 +32,8 @@ public class Event {
         Active,
         Warmup,
         Success,
-        Fail;
+        Fail,
+        Invalid;
     }
     
     private Integer worldID;

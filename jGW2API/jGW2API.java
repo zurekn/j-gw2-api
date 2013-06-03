@@ -172,6 +172,28 @@ public class jGW2API {
         return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"map_names.json")).getJSONArray();
     }
     
+    static public JSONObject getColors() throws IOException {
+        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"colors.json")).getJSONObject();
+    }
+    
+    static public JSONObject getBuildInformations() throws IOException {
+        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"build.json")).getJSONObject();
+    }
+    
+    static public JSONObject getGuildDetails(String guildID, String guildName) throws IOException, MalformedURLException {
+        String args = "";
+        if (guildID != null && guildName == null) {
+            args += "?guild_id="+guildID;
+        }
+        else if (guildID == null && guildName != null) {
+            args += "?guild_name=guildName";
+        }
+        else {
+            args += "?guild_id="+guildID+"&guild_name="+guildName;
+        }        
+        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"guild_details.json"+args)).getJSONObject();
+    }
+    
     static public JSONArray getEventNames(String lang) throws IOException, MalformedURLException {
         return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"event_names.json?lang="+lang)).getJSONArray();
     }
@@ -183,4 +205,9 @@ public class jGW2API {
     static public JSONArray getMapNames(String lang) throws IOException, MalformedURLException {
         return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"map_names.json?lang="+lang)).getJSONArray();
     }
+    
+    static public JSONObject getColors(String lang) throws IOException, MalformedURLException {
+        return new jGW2API(new URL(jGW2API.Standard_URL+jGW2API.API_Version+"colors.json?lang="+lang)).getJSONObject();
+    }
+    
 }
