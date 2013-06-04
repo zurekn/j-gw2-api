@@ -186,7 +186,7 @@ public class jGW2API {
             args += "?guild_id="+guildID;
         }
         else if (guildID == null && guildName != null) {
-            args += "?guild_name=guildName";
+            args += "?guild_name="+guildName;
         }
         else {
             args += "?guild_id="+guildID+"&guild_name="+guildName;

@@ -25,6 +25,8 @@ package jGW2API.util;
 
 import jGW2API.jGW2API;
 import jGW2API.util.event.*;
+import jGW2API.util.guild.Guild;
+import jGW2API.util.guild.GuildNotFoundException;
 import jGW2API.util.item.*;
 import jGW2API.util.wvw.*;
 import java.io.IOException;
@@ -89,5 +91,16 @@ public abstract class HighLevelAPI {
     public static RecipeDetails getRecipeDetails(Integer recipeID, Languages lang) throws IOException {
         return new RecipeDetails(jGW2API.getRecipeDetails(recipeID.toString(), lang.toString()));
     }
- 
+
+    public static Colors getColors(Languages lang) throws IOException {
+        return new Colors(jGW2API.getColors(lang.toString()).getJSONObject("colors"));
+    }
+    
+    public static Guild getGuildDetails(String guildID, String guildName) throws IOException, GuildNotFoundException  {
+        return new Guild(jGW2API.getGuildDetails(guildID, guildName));
+    }
+    
+    public static Integer getBuild() throws IOException {
+        return new Integer(jGW2API.getBuildInformations().getInt("build_id"));
+    }
 }
